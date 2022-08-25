@@ -1,13 +1,8 @@
-"""
-A module for creating .pdf math worksheets
-"""
-
-import random
-
+import random 
 from functools import reduce
-from typing import List, Tuple
 
-QuestionInfo = Tuple[int, str, int, int]
+
+QuestionInfo = tuple[int, str, int, int]
 
 class MathWorksheetGenerator:
     """class for generating math worksheet of specified size and main_type"""
@@ -21,7 +16,7 @@ class MathWorksheetGenerator:
         return set(reduce(list.__add__,
                           ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
 
-    def division_helper(self, num) -> [int, int, int]:
+    def division_helper(self, num) -> list[int, int, int]:
         # prevent num = 0 or divisor = 1 or divisor = dividend
         factor = 1
         while not num or factor == 1 or factor == num:
@@ -59,7 +54,7 @@ class MathWorksheetGenerator:
             raise RuntimeError(f'Question main_type {current_type} not supported')
         return num_1, current_type, num_2, answer
 
-    def get_list_of_questions(self, question_count: int) -> List[QuestionInfo]:
+    def get_list_of_questions(self, question_count: int) -> list[QuestionInfo]:
         """Generate all the questions for the worksheet in a list. Initially trying for unique questions, but
         allowing duplicates if needed (e.g. asking for 80 addition problems with max size 3 requires duplication)
         :return: list of questions

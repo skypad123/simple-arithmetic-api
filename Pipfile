@@ -4,9 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-fpdf = "==1.7.2"
+fastapi = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.9"
+
+[build-system]
+requires = ["maturin"]
+build-backend = "maturin" 
